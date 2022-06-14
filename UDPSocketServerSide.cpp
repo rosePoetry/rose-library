@@ -34,7 +34,8 @@ int main(int argc, char const* argv[])
 
  /*WSAStartup failure check*/
                 iResult = WSAStartup(MAKEWORD(2, 2), &wsaData);
-                if (iResult != 0) {
+                if (iResult != 0) 
+                {
                 printf("WSAStartup failed: %d\n", iResult );
                 return -1;
                 }
@@ -42,11 +43,13 @@ int main(int argc, char const* argv[])
                 serverSocket = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
 
 /*Socket failure check*/
-                if (serverSocket == INVALID_SOCKET) {
-                printf("Socket: %d \n", serverSocket );
-                fprintf(stderr, "socket() failed! Error: %d\n", WSAGetLastError());
-                exit(EXIT_FAILURE);
-    }
+                serverSocket = socket(AF_INET, SOCK_DGRAM, 0);
+                if (serverSocket == INVALID_SOCKET) 
+                {
+                    printf("Error at socket(): %ld\n", WSAGetLastError());
+                    WSACleanup();
+                    return 1;
+                }
     else {
         //call to socket() succeeded
     }
