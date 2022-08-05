@@ -31,9 +31,9 @@ testProject::~testProject()
 void testProject::test_input()
 {
    // QVERIFY A, B, QCOMPARE C = 69
-
-    QString myMessage = "= 69";
-    QCOMPARE(myMessage.test_input(), QString("= 69"));
+   // values of A, B, C should be verified also C should be implemented in some way -> C = A + B
+    QString myMessage = "= 69"; 
+    QCOMPARE(myMessage.test_input(), QString("= 69")); // ".test_input" must be function i which compares expected value of str "= 69" with given message in the output of the program
 }
 void testProject::test_output()
 {
